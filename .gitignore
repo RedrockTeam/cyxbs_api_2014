@@ -57,9 +57,9 @@ db.php
 config.php
 /Application/Data/
 /Application/Runtime/
-Application/Common/Conf/db.php
+/Application/Common/Conf/db.php
 /Public/img/
-.svn
+/.svn/
 # Created by .ignore support plugin (hsz.mobi)
 
 #test
