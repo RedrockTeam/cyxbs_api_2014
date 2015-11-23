@@ -1,0 +1,1 @@
+a:6:{i:0;s:10:"shopimg_id";i:1;s:7:"shop_id";i:2;s:11:"shopimg_src";i:3;s:12:"shopimg_date";s:3:"_pk";s:10:"shopimg_id";s:5:"_type";a:4:{s:10:"shopimg_id";s:7:"int(11)";s:7:"shop_id";s:7:"int(11)";s:11:"shopimg_src";s:12:"varchar(255)";s:12:"shopimg_date";s:7:"int(11)";}}

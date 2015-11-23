@@ -1,0 +1,43 @@
+<!--
+/**
+ * 极光推送-V2. PHP服务器端
+ */
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/cyxbs_push.css" />
+        <script src="__PUBLIC__/js/jquery-1.8.1.min.js"></script>
+           
+        </script>     
+    </head>
+    <body>
+    	<div class="head">
+         <h1>message推送日志</h1>
+		  <span><a href="{$alert_index}">alert推送</a></span>
+         <span><a href="{$message_index}">message通知</a></span>
+         <span><a href="">推送日志</a></span>
+          <hr/>
+        </div>    
+     
+				
+      			<div class="container list">            
+				 <ul class="devices">
+					<li>
+                        欢迎使用重邮小帮手推送平台!
+                    </li>
+                 <p style="font-weight:bold; color:#06F;"><span>序号</span><span style="width:150px;">发送时间</span><span >消息标题</span><span style="width:400px;">消息内容</span><span>发送账号</span><span>发送IP</span><span>推送类型</span></p>
+						
+						<volist id="vo" name="message">
+                     <p><span>{$vo.id}</span><span style="width:150px;">{$vo.time}</span><span >{$vo.title}</span><span style="width:400px;">{$vo.content}</span><span>{$vo.push_user}</span><span>{$vo.send_ip}</span><span>{$vo.type}</span></p>
+						</volist>
+                    
+                
+            </ul>
+			
+            </div>
+			<span style="float:right;margin:20px;margin-right:130px">{$page}</span>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ckform.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<form class="form-inline definewidth m20" action="index.html" method="get">  
+    搜索引擎：
+    <input type="text" name="rolename" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
+    <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+    <a href="{$node_add}"><button type="button" class="btn btn-success" >新增</button></a>
+</form>
+<table class="table table-bordered table-hover definewidth m10" >
+    <thead>
+    <tr>
+        <th>编号</th>
+		<th>评论人</th>
+		 <th>学号</th>        
+		 <th>评论日期</th>
+		 <th>评论内容</th>		
+        <th>修改信息</th>
+		
+    </tr>
+    </thead>
+    <volist id="vo" name="list">
+	     <tr>
+		·    <td>
+				<span style="font-size:20px;color:green;font-weight:bold;">{$vo.comment_id}</span>				
+			  </td>
+			  <td>{$vo.stu_name}</td>
+            <td>{$vo.stu_id}</td>
+			  <td>{$vo.comment_date}</td>
+			  <td>{$vo.comment_content|substr=0,100}...</td>
+            <td>
+                  
+				  <a  onclick="return del()"  href="<?php echo U("Comment/del?del_id=".$vo['comment_id']); ?>">屏蔽言论</a> 
+            </td>
+        </tr>
+    </volist>
+  </table>
+<div class="inline pull-right page" style="font-size:20px;">{$page}</div>
+</body>
+</html>
+<script>
+    $(function () {
+        
+		$('#addnew').click(function(){
+
+				window.location.href="{$NODE_ADD_URL}";
+		 });
+
+
+    });
+
+	function del()
+	{
+		
+		
+		if(confirm("确定要屏蔽吗？（我们要做个爱国的文明人哦~大家来争当爱国小能手吧O(∩_∩)O哈哈~）"))
+		{
+		
+			return true;	
+		
+		}else{
+			return false;
+		}
+	
+	
+	
+	
+	}
+</script>

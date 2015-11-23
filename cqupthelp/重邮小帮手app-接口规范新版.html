@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>周边</title>
+
+</head>
+<body>
+<p>重邮小帮手App接口规范</p>
+
+<blockquote><p>Attention:</p>
+
+<ol>
+<li> 所有的请求参数均采用POST方式.</li>
+<li> 返回信息中包括有status和info, 若执行错误,status为0且info输出错误信息. 若执行无误,status为200且info为success.</li>
+</ol>
+</blockquote>
+
+<hr />
+
+<h2>周边</h2>
+
+<hr />
+
+<h4>餐厅</h4>
+
+<hr />
+
+<h4>1.获取商店列表</h4>
+
+<p>url:</p>
+
+<p>请求示例:</p>
+
+<pre><code>{
+    "pid"   :1
+}
+</code></pre>
+
+<p>返回示例:</p>
+
+<pre><code>{
+    "status":200/0,
+    "info":"success,错误信息"
+    "data":[
+        {
+            "shop_id"       :1,
+            "shop_name"     :"沁园干锅",
+            "shop_image"    :"http://su.bdimg.com/static/xtpl/img/music/fmsprite_35b05295.png",
+            "shop_address"  :"堕落街A区"
+        },
+
+        ...
+
+        {
+
+            ...
+
+        }
+    ]
+
+}
+</code></pre>
+
+<p><code>Ps.</code></p>
+
+<p><code>1.一个店铺会对应有多张图片,此处返回的shop_image应为第一张照片的url绝对地址</code></p>
+
+<p><code>2.pid为页码,每页默认15条数据,每页数据量要求可以在后台管理系统中修改</code></p>
+
+<h4>2.获取商店详情</h4>
+
+<p>url:</p>
+
+<p>请求示例:</p>
+
+<pre><code>{
+    "shop_id"   :1
+}
+</code></pre>
+
+<p>返回示例:</p>
+
+<pre><code>{   
+    "status"            :200/0,
+    "info"              :"success/错误信息",
+    "data"              :[
+        "shop_id"           :1,
+        "shop_name"         :"沁园干锅",
+        "shop_image"        :{
+            "http://alksdj.com/aldkj.jpg",
+            "http://asdlj.com/asdlkjalsdj.jpg"
+        },
+        "shop_address"      :"堕落街A区",
+        "shop_tel"          :"13333333333",
+        "shop_content"      :"欢迎来到沁园干锅,这里的脆皮鸡很好吃的干活",
+        "shop_sale_content" :"脆皮鸡八折了哈!"
+    ]
+
+}
+</code></pre>
+
+<p><code>Ps.</code></p>
+
+<p><code>1.shop_image为url绝对地址数组,里面包含了对应id的店铺全部信息</code></p>
+
+<p><code>2.shop_content为店铺简介</code></p>
+
+<p><code>3.shop_sale_content为优惠信息</code></p>
+
+<h4>3.评论列表</h4>
+
+<p>url:</p>
+
+<p>请求示例:</p>
+
+<pre><code>{
+    "shop_id":1,
+    "pid":1
+}
+</code></pre>
+
+<p>返回示例:</p>
+
+<pre><code>{
+    "status"    :0/200,
+    "info"      :"错误信息/success",
+    "data"      :[
+        {
+            "comment_id"        :1,
+            "comment_content"   :"这是一条评论",
+            "comment_date"      :"2014年8月32日",
+            "comment_author_name":"李竞熠"
+        },
+
+        ...
+
+        {
+
+            ...
+
+        }   
+
+    ]
+
+}
+</code></pre>
+
+<p><code>Ps.</code></p>
+
+<p><code>1.pid为页码,每页默认5条数据,每页数据量要求可以在后台管理系统中修改</code></p>
+
+<h4>4.发送评论</h4>
+
+<p>url:
+请求示例:</p>
+
+<pre><code>{
+    "shop_id"               :1,
+    "comment_content"       :"你这脆皮鸡吃了要拉肚子啊",
+    "comment_author_name"   :"李竞熠",
+    "user_number":"2012212222",
+    "user_password":"iampassword"
+}
+</code></pre>
+
+<p>返回示例:</p>
+
+<pre><code>{
+    "status"    :0/200,
+    "info"      :"错误信息/success",
+    "data"      :[ ]
+}
+</code></pre>
+
+<h4>5.菜单列表</h4>
+
+<p>url:
+请求示例:</p>
+
+<pre><code>{
+    "shop_id"   :1
+}
+</code></pre>
+
+<p>返回示例:</p>
+
+<pre><code>{
+    "status"    :0/200,
+    "info"      :"错误信息/success",
+    "data"      :[
+        {
+            "dish_id"       :1,
+            "dish_name"     :"脆皮鸡",
+            "dish_image"    :"http://www.baidu.com/sb.jpg",
+            "dish_price"    :"20.0",
+            "dish_praise_count":10
+        },
+
+        ...
+
+        {
+            ...
+        }
+    ]
+}
+</code></pre>
+
+<p><code>Ps. dish_image是一种菜对应所有图片的第一张. dish_price是价格,以浮点数保存.  praise_count是点赞数</code></p>
+
+<h4>6.菜品点赞</h4>
+
+<p>url:
+请求示例:</p>
+
+<pre><code>{
+    "dish_id":1,
+    "user_number":"2012212222",
+    "user_password":"iampassword"
+}
+</code></pre>
+
+<p>返回示例:</p>
+
+<pre><code>{
+    "status"    :0/200,
+    "info"      :"错误信息/success",
+}
+</code></pre>
+
+<p><code>Ps.注意判断,每人对一道菜只能点赞一次, user_number是学号</code></p>
+
+<hr />
+
+<h4>兼职</h4>
+
+<hr />
+</body>
+</html>
