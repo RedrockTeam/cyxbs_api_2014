@@ -55,12 +55,12 @@ gen
 # User Modified
 db.php
 config.php
-Application/Data/
-Application/Runtime/
+/Application/Data/
+/Application/Runtime/
 Application/Common/Conf/db.php
 /Public/img/
+.svn
 # Created by .ignore support plugin (hsz.mobi)
-
 
 #test
 #Public/member_image/*
