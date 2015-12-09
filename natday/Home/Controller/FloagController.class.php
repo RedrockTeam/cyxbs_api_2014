@@ -41,4 +41,18 @@ class FloagController extends Controller {
         $url = "http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/Api/Api/webOauth";
         return json_encode($this->curl_api($url, $t2));
     }
+    private function curl_api($url, $data=''){
+        // 初始化一个curl对象
+        $ch = curl_init();
+        curl_setopt ( $ch, CURLOPT_URL, $url );
+        curl_setopt ( $ch, CURLOPT_POST, 1 );
+        curl_setopt ( $ch, CURLOPT_HEADER, 0 );
+        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt ( $ch, CURLOPT_POSTFIELDS, $data );
+        // 运行curl，获取网页。
+        $contents = json_decode(curl_exec($ch));
+        // 关闭请求
+        curl_close($ch);
+        return $contents;
+    }
 }
