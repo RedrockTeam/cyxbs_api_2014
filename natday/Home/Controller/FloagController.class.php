@@ -2,7 +2,8 @@
 namespace Home\Controller;
 use Think\Controller;
 class FloagController extends Controller {
-	public function index(){
+    private $acess_token = 'gh_68f0a1ffc303';
+    public function index(){
         $code = I('get.code');
         if($code == null){
             return redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appid&redirect_uri=http%3a%2f%2fhongyan.cqupt.edu.cn%2fcquptluck%2fHome%2fIndex%2findex.html&response_type=code&scope=snsapi_userinfo&state=sfasdfasdfefvee#wechat_redirect");
@@ -11,14 +12,13 @@ class FloagController extends Controller {
             $return =  json_decode($this->getOpenId());
             $openid = $return->data->openid;
         }
-	  if($openid) { 
-	    session('openid', $openid);
-	  } else {
-	  	$openid = session('openid');
-	  
-	  } 
-      $this->assign('openid', $openid);
-	  $this->display();
+        if($openid) {
+        session('openid', $openid);
+        } else {
+        $openid = session('openid');
+        }
+        $this->assign('openid', $openid);
+        $this->display();
 	}
 
     private function getOpenId () {
